@@ -94,6 +94,7 @@ public class TowerSegment extends GameObject {
 	
 	private void onGameOver() {
 		System.out.println("Game over");
+		SceneManager.gameScene.gameOver = true;
 		SceneManager.gameScene.add(new EndBlock());		
 	}
 	

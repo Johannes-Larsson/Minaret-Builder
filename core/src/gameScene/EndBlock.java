@@ -8,17 +8,18 @@ import com.larsson.johannes.minaretBuilder.game.SceneManager;
 
 public class EndBlock extends GameObject {
 	
-	boolean dead;
+	public static boolean dead;
 	
 	public EndBlock() {
-		super(new Animation(Assets.endBlock, 50, 50, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
+		super(new Animation(Assets.endBlock, 60, 100, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
+		dead = false;
 		setX(getX() - getW() / 2);
 	}
 	
 	public void update() {
 		
 		vy += -.1f;
-		
+		System.out.println(collisionY);
 		if (collisionY != CollisionState.None) {
 			dead = true;
 			vy = 0;

@@ -2,8 +2,10 @@ package gameScene;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.larsson.johannes.minaretBuilder.framework.GameObject;
+import com.larsson.johannes.minaretBuilder.framework.Input;
 import com.larsson.johannes.minaretBuilder.framework.Scene;
 import com.larsson.johannes.minaretBuilder.game.Assets;
+import com.larsson.johannes.minaretBuilder.game.SceneManager;
 
 public class GameScene extends Scene {
 	
@@ -17,6 +19,12 @@ public class GameScene extends Scene {
 	}
 	
 	public void update() {
+		if (gameOver && EndBlock.dead && Input.isPressed()) {
+			SceneManager.gameScene = new GameScene();
+			SceneManager.setScene(SceneManager.gameScene);
+		}
+		System.out.println(EndBlock.dead);
+		
 		super.update();
 	}
 	

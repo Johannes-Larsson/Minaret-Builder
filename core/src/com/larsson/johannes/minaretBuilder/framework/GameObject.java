@@ -33,6 +33,7 @@ public class GameObject {
 		setY(y);
 		canDie = health > 0;
 		maxHealth = health;
+		collisionX = collisionY = CollisionState.None;
 	}
 	
 	public void update() {
