@@ -10,19 +10,21 @@ import com.larsson.johannes.minaretBuilder.game.Assets;
 import com.larsson.johannes.minaretBuilder.game.SceneManager;
 
 public class TowerSegment extends GameObject {
-	final static int startWidth = 100, height = 30, edgePadding = 30;
+	final static int startWidth = 150, height = 60, edgePadding = 30;
 	
 	public enum State { Floating, Falling, Dead };
 	public State state;
 	
 	public static boolean hasHitBottom;
 	
+	public boolean hasFirstCollision;
+	
 	public TowerSegment() {
 		this(startWidth);
 	}
 	
 	public TowerSegment(int width) {
-		super(makeAnim(width), MathUtils.random() * (Game.WIDTH - 300) + 100, Game.camera.position.y);
+		super(makeAnim(width), MathUtils.random() * (Game.WIDTH - 300) + 100, Game.camera.position.y + Game.HEIGHT / 2 - 120);
 		state = State.Floating;
 		vx = MathUtils.random(2, 3) - 1;
 		vx *= 1;
@@ -49,6 +51,16 @@ public class TowerSegment extends GameObject {
 				state = State.Dead;
 				vy = 0;
 				vx = 0;
+				
+				if (collidedObject != null && collidedObject instanceof TowerSegment) {
+					TowerSegment col = ((TowerSegment)collidedObject);
+					if (col.hasFirstCollision) {
+						onGameOver();
+						return;
+					}
+					else col.hasFirstCollision = true;
+				}
+				
 				
 				if (getY() <= 0) {
 					if (hasHitBottom) {

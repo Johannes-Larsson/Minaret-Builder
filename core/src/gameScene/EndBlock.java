@@ -11,7 +11,7 @@ public class EndBlock extends GameObject {
 	boolean dead;
 	
 	public EndBlock() {
-		super(new Animation(Assets.endBlock, 30, 30, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
+		super(new Animation(Assets.endBlock, 50, 50, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
 		setX(getX() - getW() / 2);
 	}
 	
