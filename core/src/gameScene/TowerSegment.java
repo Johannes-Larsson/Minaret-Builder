@@ -30,8 +30,6 @@ public class TowerSegment extends GameObject {
 		vx = MathUtils.floor(MathUtils.random(1) * 2) - 1;
 		vx *= 3 + (SceneManager.gameScene != null ? SceneManager.gameScene.getDifficulty() : 0);
 		solid = true;
-		
-		
 	}
 	
 	public void update() {
@@ -109,7 +107,7 @@ public class TowerSegment extends GameObject {
 	}
 	
 	private static Animation makeAnim(int width) {
-		int texture = width / startWidth;
+		int texture = Assets.towerBlocks.length - (int)(((float)width / startWidth) * Assets.towerBlocks.length);
 		if (texture < 0) texture = 0;
 		if (texture >= Assets.towerBlocks.length) texture = Assets.towerBlocks.length - 1;
 		Texture t = Assets.towerBlocks[texture];
