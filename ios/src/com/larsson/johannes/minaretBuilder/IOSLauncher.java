@@ -5,7 +5,7 @@ import org.robovm.apple.uikit.UIApplication;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.larsson.johannes.minaretBuilder.Game;
+import com.larsson.johannes.minaretBuilder.framework.Game;
 
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override
