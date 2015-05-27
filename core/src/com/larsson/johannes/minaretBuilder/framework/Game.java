@@ -2,13 +2,13 @@ package com.larsson.johannes.minaretBuilder.framework;
 
 import com.larsson.johannes.minaretBuilder.game.Assets;
 import com.larsson.johannes.minaretBuilder.game.SceneManager;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.math.MathUtils;
 
 public class Game extends ApplicationAdapter {
 	final static float aspectRatio = 16f/9f;
@@ -16,6 +16,8 @@ public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	public static OrthographicCamera camera;
 	ShaderProgram shader;
+	
+	public static float cameraTargetX, cameraTargetY;
 	
 	@Override
 	public void create () {
@@ -30,11 +32,16 @@ public class Game extends ApplicationAdapter {
 		//shader = new ShaderProgram(Gdx.files.internal("shaders/shader.vsh"), Gdx.files.internal("shaders/shader.fsh"));
 		
 		//batch.setShader(shader);
+		cameraTargetX = WIDTH / 2;
+		cameraTargetY = HEIGHT / 2;
 	}
 	
 	void update() {
 		Input.update();
 		SceneManager.getCurrentScene().update();
+		
+		camera.position.x = MathUtils.lerp(camera.position.x, cameraTargetX, .05f);
+		camera.position.y = MathUtils.lerp(camera.position.y, cameraTargetY, .05f);
 	}
 
 	@Override

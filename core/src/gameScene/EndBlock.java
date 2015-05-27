@@ -10,6 +10,8 @@ public class EndBlock extends GameObject {
 	
 	public static boolean dead;
 	
+	int deathCounter;
+	
 	public EndBlock() {
 		super(new Animation(Assets.endBlock, 60, 100, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
 		dead = false;
@@ -19,11 +21,13 @@ public class EndBlock extends GameObject {
 	public void update() {
 		
 		vy += -.1f;
-		System.out.println(collisionY);
 		if (collisionY != CollisionState.None) {
 			dead = true;
 			vy = 0;
 		}
+		
+		if (dead) deathCounter++;
+		if (deathCounter > 30) Game.cameraTargetY = Game.HEIGHT / 2;
 		
 		super.update();
 	}

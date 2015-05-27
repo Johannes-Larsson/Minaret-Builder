@@ -24,11 +24,13 @@ public class TowerSegment extends GameObject {
 	}
 	
 	public TowerSegment(int width) {
-		super(makeAnim(width), MathUtils.random() * (Game.WIDTH - 300) + 100, Game.camera.position.y + Game.HEIGHT / 2 - 120);
+		super(makeAnim(width), Game.WIDTH / 2 - width / 2, Game.camera.position.y + Game.HEIGHT / 2 - 80);
 		state = State.Floating;
-		vx = MathUtils.random(2, 3) - 1;
-		vx *= 1;
+		vx = MathUtils.floor(MathUtils.random(1) * 2) - 1;
+		vx *= 1 + (SceneManager.gameScene != null ? SceneManager.gameScene.getDifficulty() : 0);
 		solid = true;
+		
+		
 	}
 	
 	public void update() {
@@ -52,6 +54,12 @@ public class TowerSegment extends GameObject {
 				vy = 0;
 				vx = 0;
 				
+				float d = getY()  - Game.cameraTargetY;
+				System.out.println(d);
+				if (d > 0) { 
+					Game.cameraTargetY += d;
+				}
+				
 				if (collidedObject != null && collidedObject instanceof TowerSegment) {
 					TowerSegment col = ((TowerSegment)collidedObject);
 					if (col.hasFirstCollision) {
@@ -63,6 +71,7 @@ public class TowerSegment extends GameObject {
 				
 				
 				if (getY() <= 0) {
+					setY(0);
 					if (hasHitBottom) {
 						onGameOver();
 					} else {

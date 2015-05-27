@@ -23,7 +23,6 @@ public class GameScene extends Scene {
 			SceneManager.gameScene = new GameScene();
 			SceneManager.setScene(SceneManager.gameScene);
 		}
-		System.out.println(EndBlock.dead);
 		
 		super.update();
 	}
@@ -37,6 +36,6 @@ public class GameScene extends Scene {
 		
 		for (GameObject g : objects) if (g instanceof TowerSegment) noOfTowers ++;
 		
-		return noOfTowers / 10f;
+		return noOfTowers / 20f;
 	}
 }	
