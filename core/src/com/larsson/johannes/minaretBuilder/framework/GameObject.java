@@ -19,6 +19,8 @@ public class GameObject {
 	protected float vx, vy;
 	protected enum CollisionState { Pos, Neg, None };
 	protected CollisionState collisionX, collisionY;
+	protected GameObject collidedObject;
+	
 	
 	public GameObject(Animation animation, float x, float y) {
 		this(animation, x, y, 0);
@@ -75,7 +77,10 @@ public class GameObject {
 	private boolean collides() {
 		for (GameObject g : SceneManager.getCurrentScene().objects)
 		{
-			if (g.solid && g.intersects(this)) return true;
+			if (g.solid && g.intersects(this) && g != this) {
+				collidedObject = g;
+				return true;
+			}
 		}
 		return false;
 	}

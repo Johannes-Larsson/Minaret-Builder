@@ -11,7 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 public class Game extends ApplicationAdapter {
-	public static final int WIDTH = 360, HEIGHT = 240;
+	final static float aspectRatio = 16f/9f;
+	public static final int WIDTH = 360, HEIGHT = (int)(WIDTH * aspectRatio);
 	SpriteBatch batch;
 	public static OrthographicCamera camera;
 	ShaderProgram shader;

@@ -7,6 +7,8 @@ import com.larsson.johannes.minaretBuilder.framework.Game;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = 400;
+		config.height = (int)(config.width * (16f / 9f));
 		new LwjglApplication(new Game(), config);
 	}
 }
