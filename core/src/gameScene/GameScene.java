@@ -1,6 +1,7 @@
 package gameScene;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.larsson.johannes.minaretBuilder.framework.Game;
 import com.larsson.johannes.minaretBuilder.framework.GameObject;
 import com.larsson.johannes.minaretBuilder.framework.Input;
 import com.larsson.johannes.minaretBuilder.framework.Scene;
@@ -15,6 +16,8 @@ public class GameScene extends Scene {
 		super();
 		TowerSegment.hasHitBottom = false;
 		gameOver = false;
+		add(new Background());
+		for (int i = 0; i < 10; i++) add(new Cloud(Game.HEIGHT / 2 + i * 300));
 		add(new TowerSegment());
 	}
 	

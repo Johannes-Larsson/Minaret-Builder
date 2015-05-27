@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 
 public class Game extends ApplicationAdapter {
 	final static float aspectRatio = 16f/9f;
-	public static final int WIDTH = 360, HEIGHT = (int)(WIDTH * aspectRatio);
+	public static final int WIDTH = 1024, HEIGHT = (int)(WIDTH * aspectRatio);
 	SpriteBatch batch;
 	public static OrthographicCamera camera;
 	ShaderProgram shader;
@@ -47,7 +47,7 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void render () {
 		update();
-		Gdx.gl.glClearColor(.3f, .4f, 1f, 1);
+		Gdx.gl.glClearColor(8/255f, 128/255f, 138/255f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);

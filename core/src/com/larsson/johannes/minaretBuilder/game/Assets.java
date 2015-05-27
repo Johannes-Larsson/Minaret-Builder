@@ -9,9 +9,9 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
 public class Assets {
 	public static BitmapFont fontBig, fontSmall;
 	
-	public static Texture[] towerBlocks;
+	public static Texture[] towerBlocks, clouds;
 	
-	public static Texture endBlock;
+	public static Texture endBlock, background;
 	
 	public static void load() {
 		/*FreeTypeFontGenerator gen = new FreeTypeFontGenerator(Gdx.files.internal("ARIAL.TTF"));
@@ -28,7 +28,11 @@ public class Assets {
 		towerBlocks = new Texture[8];
 		for (int i = 0; i < 8; i++) towerBlocks[i] = new Texture("Lada_" + (i + 1) + ".png");
 		
+		clouds = new Texture[4];
+		for (int i = 0; i < clouds.length; i++) clouds[i] = new Texture("moln_" + (i + 1) + ".png");
+		
 		endBlock = new Texture("towerTop.png");
+		background = new Texture("background.png");
 		
 		fontBig = new BitmapFont();
 	}

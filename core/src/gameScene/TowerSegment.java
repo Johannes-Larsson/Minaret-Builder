@@ -10,11 +10,12 @@ import com.larsson.johannes.minaretBuilder.game.Assets;
 import com.larsson.johannes.minaretBuilder.game.SceneManager;
 
 public class TowerSegment extends GameObject {
-	final static int startWidth = 150, height = 60, edgePadding = 30;
+	final static int startWidth = 300, height = 120, edgePadding = 30;
 	
 	public enum State { Floating, Falling, Dead };
 	public State state;
 	
+	final static int floor = 40;
 	public static boolean hasHitBottom;
 	
 	public boolean hasFirstCollision;
@@ -24,10 +25,10 @@ public class TowerSegment extends GameObject {
 	}
 	
 	public TowerSegment(int width) {
-		super(makeAnim(width), Game.WIDTH / 2 - width / 2, Game.camera.position.y + Game.HEIGHT / 2 - 80);
+		super(makeAnim(width), Game.WIDTH / 2 - width / 2, Game.camera.position.y + Game.HEIGHT / 2 - 200);
 		state = State.Floating;
 		vx = MathUtils.floor(MathUtils.random(1) * 2) - 1;
-		vx *= 1 + (SceneManager.gameScene != null ? SceneManager.gameScene.getDifficulty() : 0);
+		vx *= 3 + (SceneManager.gameScene != null ? SceneManager.gameScene.getDifficulty() : 0);
 		solid = true;
 		
 		
@@ -48,8 +49,8 @@ public class TowerSegment extends GameObject {
 			break;
 		case Falling:
 			
-			vy -= .1f;
-			if (collisionY != CollisionState.None || getY() <= 0) {
+			vy -= .5f;
+			if (collisionY != CollisionState.None || getY() <= floor) {
 				state = State.Dead;
 				vy = 0;
 				vx = 0;
@@ -70,8 +71,8 @@ public class TowerSegment extends GameObject {
 				}
 				
 				
-				if (getY() <= 0) {
-					setY(0);
+				if (getY() <= floor) {
+					setY(floor);
 					if (hasHitBottom) {
 						onGameOver();
 					} else {

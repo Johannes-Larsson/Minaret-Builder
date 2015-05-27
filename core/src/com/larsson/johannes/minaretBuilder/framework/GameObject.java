@@ -48,7 +48,7 @@ public class GameObject {
 		collisionX = CollisionState.None;
 		collisionY = CollisionState.None;
 		
-		final int steps = 5;
+		final int steps = 10;
 		final float x = vx / steps;
 		final float y = vy / steps;
 		

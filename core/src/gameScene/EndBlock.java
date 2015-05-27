@@ -13,14 +13,15 @@ public class EndBlock extends GameObject {
 	int deathCounter;
 	
 	public EndBlock() {
-		super(new Animation(Assets.endBlock, 60, 100, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
+		super(new Animation(Assets.endBlock, 140, 240, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
 		dead = false;
 		setX(getX() - getW() / 2);
+		System.out.println("new athisdgnf");
 	}
 	
 	public void update() {
 		
-		vy += -.1f;
+		vy += -.5f;
 		if (collisionY != CollisionState.None) {
 			dead = true;
 			vy = 0;
@@ -34,7 +35,7 @@ public class EndBlock extends GameObject {
 	
 	private static int getXPos() {
 		GameObject highest = null;
-		for (GameObject g : SceneManager.gameScene.objects) if (highest == null || g.getY() > highest.getY()) highest = g;
+		for (GameObject g : SceneManager.gameScene.objects) if (g instanceof TowerSegment && (highest == null || g.getY() > highest.getY())) highest = g;
 		return (int)(highest.getX() + highest.getW() / 2);
 	}
 }
