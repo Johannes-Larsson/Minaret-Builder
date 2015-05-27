@@ -29,7 +29,7 @@ public class Assets {
 		for (int i = 0; i < 8; i++) towerBlocks[i] = new Texture("Lada_" + (i + 1) + ".png");
 		
 		clouds = new Texture[4];
-		for (int i = 0; i < clouds.length; i++) clouds[i] = new Texture("moln_" + (i + 1) + ".png");
+		for (int i = 0; i < clouds.length; i++) clouds[i] = new Texture("Moln_" + (i + 1) + ".png");
 		
 		endBlock = new Texture("towerTop.png");
 		background = new Texture("background.png");
