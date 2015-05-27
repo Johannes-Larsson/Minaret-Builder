@@ -121,6 +121,14 @@ public class GameObject {
 		animation.sprite.setY(y);
 	}
 	
+	protected void setW(float w) {
+		animation.sprite.setSize(w, getH());
+	}
+	
+	protected void setH(float h) {
+		animation.sprite.setSize(getW(), h);
+	}
+	
 	public void draw(SpriteBatch batch) {
 		animation.draw(batch);
 	}

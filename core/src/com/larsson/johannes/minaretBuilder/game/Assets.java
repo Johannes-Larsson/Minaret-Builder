@@ -11,6 +11,8 @@ public class Assets {
 	
 	public static Texture[] towerBlocks;
 	
+	public static Texture endBlock;
+	
 	public static void load() {
 		/*FreeTypeFontGenerator gen = new FreeTypeFontGenerator(Gdx.files.internal("ARIAL.TTF"));
 		FreeTypeFontParameter par = new FreeTypeFontParameter();
@@ -25,6 +27,8 @@ public class Assets {
 		
 		towerBlocks = new Texture[8];
 		for (int i = 0; i < 8; i++) towerBlocks[i] = new Texture("Lada_" + (i + 1) + ".png");
+		
+		endBlock = new Texture("towerTop.png");
 		
 		fontBig = new BitmapFont();
 	}

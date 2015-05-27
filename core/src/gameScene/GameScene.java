@@ -7,8 +7,12 @@ import com.larsson.johannes.minaretBuilder.game.Assets;
 
 public class GameScene extends Scene {
 	
+	public static boolean gameOver;
+	
 	public GameScene() {
 		super();
+		TowerSegment.hasHitBottom = false;
+		gameOver = false;
 		add(new TowerSegment());
 	}
 	

@@ -15,6 +15,8 @@ public class TowerSegment extends GameObject {
 	public enum State { Floating, Falling, Dead };
 	public State state;
 	
+	public static boolean hasHitBottom;
+	
 	public TowerSegment() {
 		this(startWidth);
 	}
@@ -49,16 +51,25 @@ public class TowerSegment extends GameObject {
 				vx = 0;
 				
 				if (getY() <= 0) {
-					SceneManager.gameScene.add(new TowerSegment());
+					if (hasHitBottom) {
+						onGameOver();
+					} else {
+						SceneManager.gameScene.add(new TowerSegment());
+					}
+					hasHitBottom = true;
 				} else {
 					int dw = Math.abs((int)getX() - (int)collidedObject.getX());
 					int w = (int)getW() - dw;
+					
+					setW(w);
+					if (getX() < collidedObject.getX()) setX(getX() + dw);
+					//else setX(getX() + getW());
+					
 					if (w < 10) {
-						System.out.println("Game over");
-						SceneManager.gameScene.add(new EndBlock());
+						onGameOver();
 						return;
 					}
-					SceneManager.gameScene.add(new TowerSegment(w));
+					else SceneManager.gameScene.add(new TowerSegment(w));
 				}
 			}
 			
@@ -67,6 +78,11 @@ public class TowerSegment extends GameObject {
 		}
 		
 		super.update();
+	}
+	
+	private void onGameOver() {
+		System.out.println("Game over");
+		SceneManager.gameScene.add(new EndBlock());		
 	}
 	
 	private static Animation makeAnim(int width) {
