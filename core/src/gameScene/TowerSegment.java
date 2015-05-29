@@ -97,7 +97,7 @@ public class TowerSegment extends GameObject {
 			}
 			
 			break;
-		default: break;
+		default: break; //dead
 		}
 		
 		super.update();

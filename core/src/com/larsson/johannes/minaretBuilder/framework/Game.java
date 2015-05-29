@@ -14,12 +14,15 @@ public class Game extends ApplicationAdapter {
 	final static float aspectRatio = 16f/9f;
 	public static final int WIDTH = 1024, HEIGHT = (int)(WIDTH * aspectRatio);
 	public static final int UIWIDTH = 1000, UIHEIGHT = (int)(UIWIDTH * aspectRatio);
+	
 	SpriteBatch batch, uiBatch;
+	
 	public static OrthographicCamera camera;
 	private static OrthographicCamera uiCamera;
+	
 	ShaderProgram shader;
 	
-	public static float cameraTargetX, cameraTargetY;
+	public static float cameraTargetX, cameraTargetY, clearR, clearG, clearB;
 	
 	@Override
 	public void create () {
@@ -56,7 +59,7 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void render () {
 		update();
-		Gdx.gl.glClearColor(8/255f, 128/255f, 138/255f, 1);
+		Gdx.gl.glClearColor(clearR, clearG, clearB, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);

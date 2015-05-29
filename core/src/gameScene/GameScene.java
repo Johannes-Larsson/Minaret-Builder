@@ -22,6 +22,13 @@ public class GameScene extends Scene {
 		add(new Background());
 		for (int i = 0; i < 10; i++) add(new Cloud(Game.HEIGHT / 2 + i * 300));
 		add(new TowerSegment());
+		onResume();
+	}
+	
+	public void onResume() {
+		Game.clearR = 8/255f;
+		Game.clearG=  128/255f;
+		Game.clearB = 138/255f;
 	}
 	
 	public void update() {

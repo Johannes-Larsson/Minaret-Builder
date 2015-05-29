@@ -13,7 +13,15 @@ public class Assets {
 	
 	public static Texture[] towerBlocks, clouds;
 	
-	public static Texture endBlock, background;
+	public static Texture 
+	endBlock,
+	gameBackground,
+	
+	menuBackground,
+	playButtonLight,
+	playButtonDark,
+	quitButtonLight,
+	quitButtonDark;
 	
 	public static void load() {
 		FreeTypeFontGenerator gen = new FreeTypeFontGenerator(Gdx.files.internal("ArabDances.ttf"));
@@ -37,6 +45,12 @@ public class Assets {
 		for (int i = 0; i < clouds.length; i++) clouds[i] = new Texture("Moln_" + (i + 1) + ".png");
 		
 		endBlock = new Texture("towerTop.png");
-		background = new Texture("background.png");
+		gameBackground = new Texture("background.png");
+		
+		menuBackground = new Texture("menuBackground.png");
+		playButtonLight = new Texture("playButtonLight.png");
+		playButtonDark = new Texture("playButtonDark.png");
+		quitButtonLight = new Texture("quitButtonLight.png");
+		quitButtonDark = new Texture("quitButtonDark.png");
 	}
 }

@@ -8,7 +8,7 @@ import com.larsson.johannes.minaretBuilder.game.Assets;
 public class Background extends GameObject {
 
 	public Background() {
-		super(new Animation(Assets.background, Game.WIDTH, 2100, 1, 1024, 2100, 0), 0, 0);
+		super(new Animation(Assets.gameBackground, Game.WIDTH, 2100, 1, 1024, 2100, 0), 0, 0);
 		// TODO Auto-generated constructor stub
 	}
 	
