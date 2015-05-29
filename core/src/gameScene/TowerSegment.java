@@ -52,7 +52,6 @@ public class TowerSegment extends GameObject {
 				state = State.Dead;
 				vy = 0;
 				vx = 0;
-				
 				float d = getY()  - Game.cameraTargetY;
 				System.out.println(d);
 				if (d > 0) { 
@@ -64,8 +63,10 @@ public class TowerSegment extends GameObject {
 					if (col.hasFirstCollision) {
 						onGameOver();
 						return;
+					} else {
+						col.hasFirstCollision = true;
+						//SceneManager.gameScene.score++;
 					}
-					else col.hasFirstCollision = true;
 				}
 				
 				
@@ -75,9 +76,11 @@ public class TowerSegment extends GameObject {
 						onGameOver();
 					} else {
 						SceneManager.gameScene.add(new TowerSegment());
+						SceneManager.gameScene.score++;
 					}
 					hasHitBottom = true;
 				} else {
+					SceneManager.gameScene.score++;
 					int dw = Math.abs((int)getX() - (int)collidedObject.getX());
 					int w = (int)getW() - dw;
 					

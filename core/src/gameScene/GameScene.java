@@ -1,5 +1,6 @@
 package gameScene;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.larsson.johannes.minaretBuilder.framework.Game;
 import com.larsson.johannes.minaretBuilder.framework.GameObject;
@@ -11,6 +12,8 @@ import com.larsson.johannes.minaretBuilder.game.SceneManager;
 public class GameScene extends Scene {
 	
 	public static boolean gameOver;
+	
+	public int score;
 	
 	public GameScene() {
 		super();
@@ -34,11 +37,21 @@ public class GameScene extends Scene {
 		super.draw(batch);
 	}
 	
-	public float getDifficulty() {
+	public void drawUi(SpriteBatch uiBatch) {
+		String s = "Score: " + score;
+		TextBounds b = Assets.fontBig.getBounds(s);
+		Assets.fontBig.draw(uiBatch, s, Game.UIWIDTH / 2 - b.width / 2, Game.UIHEIGHT - b.height * 1.2f); //todo: actuall score
+	}
+	
+	public int getNoOfTowers() {
 		int noOfTowers = 0;
 		
 		for (GameObject g : objects) if (g instanceof TowerSegment) noOfTowers ++;
 		
-		return noOfTowers / 20f;
+		return noOfTowers;
+	}
+	
+	public float getDifficulty() {
+		return getNoOfTowers() / 20f;
 	}
 }	

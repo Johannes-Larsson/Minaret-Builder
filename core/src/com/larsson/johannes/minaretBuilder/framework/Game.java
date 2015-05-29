@@ -13,8 +13,10 @@ import com.badlogic.gdx.math.MathUtils;
 public class Game extends ApplicationAdapter {
 	final static float aspectRatio = 16f/9f;
 	public static final int WIDTH = 1024, HEIGHT = (int)(WIDTH * aspectRatio);
-	SpriteBatch batch;
+	public static final int UIWIDTH = 1000, UIHEIGHT = (int)(UIWIDTH * aspectRatio);
+	SpriteBatch batch, uiBatch;
 	public static OrthographicCamera camera;
+	private static OrthographicCamera uiCamera;
 	ShaderProgram shader;
 	
 	public static float cameraTargetX, cameraTargetY;
@@ -24,6 +26,13 @@ public class Game extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(false, WIDTH, HEIGHT);
+
+		uiBatch = new SpriteBatch();
+		uiCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		uiCamera.setToOrtho(false, UIWIDTH, UIHEIGHT);
+		uiCamera.update();
+		uiBatch.setProjectionMatrix(uiCamera.combined);
+		
 		Assets.load();
 		SceneManager.init();
 		Input.init();
@@ -54,5 +63,8 @@ public class Game extends ApplicationAdapter {
 		batch.begin();
 		SceneManager.getCurrentScene().draw(batch);
 		batch.end();
+		uiBatch.begin();
+		SceneManager.getCurrentScene().drawUi(uiBatch);
+		uiBatch.end();
 	}
 }
