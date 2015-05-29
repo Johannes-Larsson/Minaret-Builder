@@ -14,7 +14,7 @@ public class Cloud extends GameObject {
 	
 	public Cloud(int height) {
 		super(getAnim(), MathUtils.random(0, Game.WIDTH), height);
-		vx = MathUtils.random(.2f, .4f) * (MathUtils.randomBoolean() ? -1 : 1);
+		vx = MathUtils.random(.4f, .7f) * (MathUtils.randomBoolean() ? -1 : 1);
 		startHeight = (int)getY();
 	}
 	

@@ -97,7 +97,9 @@ public class TowerSegment extends GameObject {
 			}
 			
 			break;
-		default: break; //dead
+		default:
+			if (getY() > floor) vy -= .1f;
+			break; //dead
 		}
 		
 		super.update();
