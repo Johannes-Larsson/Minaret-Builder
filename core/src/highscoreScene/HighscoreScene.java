@@ -13,7 +13,7 @@ import com.larsson.johannes.minaretBuilder.game.SceneManager;
 
 public class HighscoreScene extends Scene {
 	
-	private final String PREFERECE_NAME = "MinaretBuilderSettings";
+	private final String PREFERECE_NAME = "MinaretBuilderSettings", HIGHSCORE = "highscore";
 	
 	Button retry, quit;
 	
@@ -29,11 +29,20 @@ public class HighscoreScene extends Scene {
 	}
 	
 	public void update() {
+		System.out.println("h: " + highscore + ", s: " + score);
+		
 		if (retry.isPressed()) {
 			SceneManager.setScene(SceneManager.gameScene = new GameScene());
 		}
 		else if (quit.isPressed()) {
 			Gdx.app.exit();
+		}
+	}
+	
+	public void onPause() {
+		if (score > highscore) {
+			setHighscore(score);
+			System.out.println("saving " + score);
 		}
 	}
 	
@@ -45,10 +54,11 @@ public class HighscoreScene extends Scene {
 		if (score <= highscore) {
 			s = "score: " + score + "\nhighscore: " + highscore;
 		} else {
-			s = "new highscore: " + score + "\nprevious: " + highscore;
+			s = "new highscore: " + score;
+			if (highscore > 0) s += "\nprevious: " + highscore;
 		}
 		
-		Assets.fontBig.drawMultiLine(batch, s, 100, 100);
+		Assets.fontBig.drawMultiLine(batch, s, 100, 400);
 	}
 	
 	public int getHighscore() {
@@ -61,9 +71,11 @@ public class HighscoreScene extends Scene {
 	
 	private int readScore() {
 		Preferences prefs = Gdx.app.getPreferences(PREFERECE_NAME);
-		if (prefs.contains("highscore")) {
-			return prefs.getInteger("highscore");
+		if (prefs.contains(HIGHSCORE)) {
+			System.out.println("highscore exists");
+			return prefs.getInteger(HIGHSCORE);
 		} else {
+			System.out.println("no previous score");
 			writeScore(0);
 			return 0;
 		}
@@ -71,6 +83,6 @@ public class HighscoreScene extends Scene {
 	
 	private void writeScore(int score) {
 		Preferences prefs = Gdx.app.getPreferences(PREFERECE_NAME);
-		prefs.putInteger("highscore", score);
+		prefs.putInteger(HIGHSCORE, score);
 	}
 }
