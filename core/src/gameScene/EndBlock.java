@@ -16,7 +16,7 @@ public class EndBlock extends GameObject {
 		super(new Animation(Assets.endBlock, 140, 240, 1, Assets.endBlock.getWidth(), Assets.endBlock.getHeight(), 0), getXPos(), Game.camera.position.y + Game.HEIGHT / 2 + 100);
 		dead = false;
 		setX(getX() - getW() / 2);
-		System.out.println("new athisdgnf");
+		solid = true;
 	}
 	
 	public void update() {

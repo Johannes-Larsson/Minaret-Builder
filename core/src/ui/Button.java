@@ -19,7 +19,7 @@ public class Button {
 	}
 	
 	public boolean isPressed() {
-		return Input.areaIsClicked(x, y, w, h);
+		return Input.areaIsClicked(x, y, w, h) && Input.wasJustPressed();
 	}
 	
 	public void draw(SpriteBatch uiBatch) {

@@ -28,11 +28,16 @@ public class TowerSegment extends GameObject {
 		super(makeAnim(width), Game.WIDTH / 2 - width / 2, Game.camera.position.y + Game.HEIGHT / 2 - 200);
 		state = State.Floating;
 		vx = MathUtils.floor(MathUtils.random(1) * 2) - 1;
-		vx *= 3 + (SceneManager.gameScene != null ? SceneManager.gameScene.getDifficulty() : 0);
+		vx *= 5 + (SceneManager.gameScene != null ? SceneManager.gameScene.getDifficulty() : 0);
 		solid = true;
 	}
 	
 	public void update() {
+		
+		if (SceneManager.gameScene.getNoOfTowers() == 1) {
+			state = State.Falling;
+			vx = 0;
+		}
 		
 		switch (state) {
 		case Floating:
@@ -76,13 +81,16 @@ public class TowerSegment extends GameObject {
 						onGameOver();
 					} else {
 						SceneManager.gameScene.add(new TowerSegment());
-						SceneManager.gameScene.score++;
+						SceneManager.gameScene.score += 100;
 					}
 					hasHitBottom = true;
 				} else {
-					SceneManager.gameScene.score++;
 					int dw = Math.abs((int)getX() - (int)collidedObject.getX());
 					int w = (int)getW() - dw;
+
+					int score = 100 + (int) (Math.pow((getW() - dw), 3) / Math.pow(getW(), 3) * 100);
+					SceneManager.gameScene.addScore(score);
+					System.out.println("score: " + score);
 					
 					setW(w);
 					if (getX() < collidedObject.getX()) setX(getX() + dw);

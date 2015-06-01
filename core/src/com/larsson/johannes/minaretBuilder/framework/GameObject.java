@@ -78,7 +78,7 @@ public class GameObject {
 	private boolean collides() {
 		for (GameObject g : SceneManager.getCurrentScene().objects)
 		{
-			if (g.solid && g.intersects(this) && g != this) {
+			if (g.solid && g.intersects(this) && g != this && this.solid) {
 				collidedObject = g;
 				return true;
 			}
@@ -133,4 +133,6 @@ public class GameObject {
 	public void draw(SpriteBatch batch) {
 		animation.draw(batch);
 	}
+	
+	public void drawUi(SpriteBatch batch) {	}
 }

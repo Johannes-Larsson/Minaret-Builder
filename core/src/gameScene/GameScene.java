@@ -27,6 +27,23 @@ public class GameScene extends Scene {
 		onResume();
 	}
 	
+	public void addScore(int score) {
+		this.score += score;
+		
+		String[] messages = new String[] {
+				"perfect!",
+				"not bad",
+				"ok",
+				"not good",
+				"terrible!"
+		};
+		float rel = (score - 100) / 100f;
+		int msg = (int)((1 - rel) * messages.length);
+		System.out.println(rel);
+		
+		SceneManager.getCurrentScene().add(new FloatingMessage(Game.WIDTH / 2, Game.HEIGHT - 200, "+" + score + "\n" + (msg < messages.length ? messages[msg] : "game over!"), 60));
+	}
+	
 	public void onResume() {
 		Game.clearR = 8/255f;
 		Game.clearG=  128/255f;
@@ -49,6 +66,8 @@ public class GameScene extends Scene {
 		String s = "Score: " + score;
 		TextBounds b = Assets.fontBig.getBounds(s);
 		Assets.fontBig.draw(uiBatch, s, Game.UIWIDTH / 2 - b.width / 2, Game.UIHEIGHT - b.height * 1.2f); //todo: actuall score
+		
+		super.drawUi(uiBatch);
 	}
 	
 	public int getNoOfTowers() {

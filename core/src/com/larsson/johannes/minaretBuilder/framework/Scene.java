@@ -26,7 +26,9 @@ public abstract class Scene {
 		for (GameObject g : objects) g.draw(batch);
 	}
 	
-	public void drawUi(SpriteBatch uiBatch) { }
+	public void drawUi(SpriteBatch uiBatch) { 
+		for (GameObject g : objects) g.drawUi(uiBatch);
+	}
 	
 	public void add(GameObject object) {
 		add.add(object);

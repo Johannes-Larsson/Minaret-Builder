@@ -58,7 +58,7 @@ public class HighscoreScene extends Scene {
 			if (highscore > 0) s += "\nprevious: " + highscore;
 		}
 		
-		Assets.fontBig.drawMultiLine(batch, s, 100, 400);
+		Assets.fontBig.drawMultiLine(batch, s, 100, 700);
 	}
 	
 	public int getHighscore() {
