@@ -1,5 +1,7 @@
 package gameScene;
 
+import highscoreScene.HighscoreScene;
+
 import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.larsson.johannes.minaretBuilder.framework.Game;
@@ -33,8 +35,7 @@ public class GameScene extends Scene {
 	
 	public void update() {
 		if (gameOver && EndBlock.dead && Input.isPressed()) {
-			SceneManager.gameScene = new GameScene();
-			SceneManager.setScene(SceneManager.gameScene);
+			SceneManager.setScene(SceneManager.highscoreScene = new HighscoreScene());
 		}
 		
 		super.update();

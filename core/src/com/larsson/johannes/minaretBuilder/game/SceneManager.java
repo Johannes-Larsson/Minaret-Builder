@@ -2,6 +2,7 @@ package com.larsson.johannes.minaretBuilder.game;
 
 import menuScene.MenuScene;
 import gameScene.GameScene;
+import highscoreScene.HighscoreScene;
 
 import com.larsson.johannes.minaretBuilder.framework.Scene;
 
@@ -10,10 +11,12 @@ public class SceneManager {
 	
 	public static GameScene gameScene;
 	public static MenuScene menuScene;
+	public static HighscoreScene highscoreScene;
 	
 	public static void init() {
 		gameScene = new GameScene();
 		menuScene = new MenuScene();
+		highscoreScene = new HighscoreScene();
 		
 		currentScene = menuScene;
 	}
