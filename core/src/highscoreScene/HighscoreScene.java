@@ -84,5 +84,6 @@ public class HighscoreScene extends Scene {
 	private void writeScore(int score) {
 		Preferences prefs = Gdx.app.getPreferences(PREFERECE_NAME);
 		prefs.putInteger(HIGHSCORE, score);
+		prefs.flush();
 	}
 }
