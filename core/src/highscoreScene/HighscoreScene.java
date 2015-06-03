@@ -6,7 +6,10 @@ import ui.Button;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
+import com.larsson.johannes.minaretBuilder.framework.Game;
 import com.larsson.johannes.minaretBuilder.framework.Scene;
 import com.larsson.johannes.minaretBuilder.game.Assets;
 import com.larsson.johannes.minaretBuilder.game.SceneManager;
@@ -21,11 +24,17 @@ public class HighscoreScene extends Scene {
 	
 	public HighscoreScene() {
 		super();
-		retry = new Button(Assets.playButtonLight, Assets.playButtonDark, 100, 1300, 400, 200);
-		quit = new Button(Assets.quitButtonLight, Assets.quitButtonDark, 100, 1050, 400, 200);
+		retry = new Button(Assets.playButtonLight, Assets.playButtonDark, Game.UIWIDTH / 2 - 200, 1100, 400, 200);
+		quit = new Button(Assets.quitButtonLight, Assets.quitButtonDark, Game.UIWIDTH / 2 - 200, 850, 400, 200);
 		
 		score = SceneManager.gameScene.score;
 		highscore = getHighscore();
+	}
+	
+	public void onResume() {
+		Game.clearR = 3f / 255;
+		Game.clearG = 43f / 255;
+		Game.clearB = 46f / 255;
 	}
 	
 	public void update() {
@@ -47,6 +56,8 @@ public class HighscoreScene extends Scene {
 	}
 	
 	public void drawUi(SpriteBatch batch) {
+		batch.draw(Assets.highscoreBackground, 0, 0);
+		
 		retry.draw(batch);
 		quit.draw(batch);
 		
@@ -58,7 +69,12 @@ public class HighscoreScene extends Scene {
 			if (highscore > 0) s += "\nprevious: " + highscore;
 		}
 		
-		Assets.fontBig.drawMultiLine(batch, s, 100, 700);
+		Assets.fontBig.setColor(Color.BLACK);
+		Assets.fontBig.setScale(.8f);
+		TextBounds b = Assets.fontBig.getMultiLineBounds(s);
+		Assets.fontBig.drawMultiLine(batch, s, 430 - b.width / 2, 355 + b.height / 2);
+		Assets.fontBig.setColor(Color.WHITE);
+		Assets.fontBig.setScale(1);
 	}
 	
 	public int getHighscore() {

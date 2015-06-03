@@ -16,8 +16,8 @@ public class MenuScene extends Scene {
 	
 	public MenuScene() {
 		super();
-		playButton = new Button(Assets.playButtonLight, Assets.playButtonDark, 100, 1300, 400, 200);
-		quitButton = new Button(Assets.quitButtonLight, Assets.quitButtonDark, 100, 1050, 400, 200);
+		playButton = new Button(Assets.playButtonLight, Assets.playButtonDark, Game.UIWIDTH / 2 - 200, 1100, 400, 200);
+		quitButton = new Button(Assets.quitButtonLight, Assets.quitButtonDark, Game.UIWIDTH / 2 - 200, 850, 400, 200);
 		onResume();
 	}
 	

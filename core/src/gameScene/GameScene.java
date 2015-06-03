@@ -22,7 +22,7 @@ public class GameScene extends Scene {
 		TowerSegment.hasHitBottom = false;
 		gameOver = false;
 		add(new Background());
-		for (int i = 0; i < 10; i++) add(new Cloud(Game.HEIGHT / 2 + i * 300));
+		for (int i = 0; i < 10; i++) add(new Cloud(Game.HEIGHT / 2 + i * 305));
 		add(new TowerSegment());
 		onResume();
 	}

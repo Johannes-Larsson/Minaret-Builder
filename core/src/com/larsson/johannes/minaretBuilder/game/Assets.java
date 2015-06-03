@@ -21,7 +21,9 @@ public class Assets {
 	playButtonLight,
 	playButtonDark,
 	quitButtonLight,
-	quitButtonDark;
+	quitButtonDark,
+	
+	highscoreBackground;
 	
 	public static void load() {
 		FreeTypeFontGenerator gen = new FreeTypeFontGenerator(Gdx.files.internal("ArabDances.ttf"));
@@ -52,5 +54,6 @@ public class Assets {
 		playButtonDark = new Texture("playButtonDark.png");
 		quitButtonLight = new Texture("quitButtonLight.png");
 		quitButtonDark = new Texture("quitButtonDark.png");
+		highscoreBackground = new Texture("highscoreScreen.png");
 	}
 }
