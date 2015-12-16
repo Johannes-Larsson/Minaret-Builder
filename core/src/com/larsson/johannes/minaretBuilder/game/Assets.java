@@ -31,7 +31,7 @@ public class Assets {
 		
 		par.magFilter = TextureFilter.MipMapLinearLinear;
 		
-		par.size = 40;
+		par.size = 90;
 		fontSmall = gen.generateFont(par);
 		
 		par.size = 100;

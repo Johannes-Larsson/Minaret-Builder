@@ -69,12 +69,12 @@ public class HighscoreScene extends Scene {
 			if (highscore > 0) s += "\nprevious: " + highscore;
 		}
 		
-		Assets.fontBig.setColor(Color.BLACK);
-		Assets.fontBig.setScale(.8f);
-		TextBounds b = Assets.fontBig.getMultiLineBounds(s);
-		Assets.fontBig.drawMultiLine(batch, s, 430 - b.width / 2, 355 + b.height / 2);
-		Assets.fontBig.setColor(Color.WHITE);
-		Assets.fontBig.setScale(1);
+		Assets.fontSmall.setColor(Color.BLACK);
+		Assets.fontSmall.setScale(.8f);
+		TextBounds b = Assets.fontSmall.getMultiLineBounds(s);
+		Assets.fontSmall.drawMultiLine(batch, s, 430 - b.width / 2, 355 + b.height / 2);
+		Assets.fontSmall.setColor(Color.WHITE);
+		Assets.fontSmall.setScale(1);
 	}
 	
 	public int getHighscore() {
