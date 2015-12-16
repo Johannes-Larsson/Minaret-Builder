@@ -32,6 +32,10 @@ public class Animation {
 		setFrame(0);
 	}
 	
+	public Animation(Texture t, float w, float h) {
+		this(t, w, h, 1, t.getWidth(), t.getHeight(), 0);
+	}
+	
 	public void setFrame(int frame) {
 		if(frame >= frames) {
 			frame = 0;

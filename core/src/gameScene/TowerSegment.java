@@ -92,15 +92,30 @@ public class TowerSegment extends GameObject {
 					SceneManager.gameScene.addScore(score);
 					System.out.println("score: " + score);
 					
+					int tx = (int)(w / getW() * animation.sprite.getTexture().getWidth());
+					int dtx = (int)(dw / getW() * animation.sprite.getTexture().getWidth());
+					
+					animation.sprite.setRegionWidth(tx);
+					
 					setW(w);
-					if (getX() < collidedObject.getX()) setX(getX() + dw);
-					//else setX(getX() + getW());
+					if (getX() < collidedObject.getX()) { // was to the left
+						SceneManager.getCurrentScene().add.add(new RestBlock(false, new Animation(animation.sprite.getTexture(), dw, getH()), 0, dtx, getX(), getY()));
+						setX(getX() + dw);
+						animation.sprite.setRegionX(dtx);
+						animation.sprite.setRegionWidth(animation.sprite.getTexture().getWidth() - dtx);
+						animation.sprite.setRegionX(dtx);
+					} else {
+						SceneManager.getCurrentScene().add.add(new RestBlock(true, new Animation(animation.sprite.getTexture(), dw, getH()), dtx, animation.sprite.getTexture().getWidth(), getX() + w, getY()));
+					}
+					
+					
 					
 					if (w < 10) {
 						onGameOver();
 						return;
+					} else {
+						SceneManager.gameScene.add(new TowerSegment(w));
 					}
-					else SceneManager.gameScene.add(new TowerSegment(w));
 				}
 			}
 			
