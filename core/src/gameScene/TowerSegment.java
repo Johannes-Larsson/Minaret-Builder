@@ -135,7 +135,8 @@ public class TowerSegment extends GameObject {
 	}
 	
 	private static Animation makeAnim(int width) {
-		int texture = Assets.towerBlocks.length - (int)(((float)width / startWidth) * Assets.towerBlocks.length);
+		int texture = Assets.towerBlocks.length - (int)(((float)width / startWidth) * Assets.towerBlocks.length) + MathUtils.random(-1, 1);
+		texture = MathUtils.clamp(texture, 0, Assets.towerBlocks.length);
 		if (texture < 0) texture = 0;
 		if (texture >= Assets.towerBlocks.length) texture = Assets.towerBlocks.length - 1;
 		Texture t = Assets.towerBlocks[texture];

@@ -28,7 +28,9 @@ public class EndBlock extends GameObject {
 		}
 		
 		if (dead) deathCounter++;
-		if (deathCounter > 30) Game.cameraTargetY = Game.HEIGHT / 2;
+		if (deathCounter > 30) {
+			Game.cameraTargetY = Game.HEIGHT / 2;
+		}
 		
 		super.update();
 	}

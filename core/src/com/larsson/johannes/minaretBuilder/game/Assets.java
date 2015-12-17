@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class Assets {
-	public static BitmapFont fontBig, fontSmall;
+	public static BitmapFont fontBig, fontSmall, fontTiny;
 	
 	public static Texture[] towerBlocks, clouds;
 	
@@ -22,6 +22,7 @@ public class Assets {
 	playButtonDark,
 	quitButtonLight,
 	quitButtonDark,
+	aboutButton,
 	
 	highscoreBackground;
 	
@@ -36,6 +37,9 @@ public class Assets {
 		
 		par.size = 100;
 		fontBig = gen.generateFont(par);
+		
+		par.size = 100;
+		fontTiny = gen.generateFont(par);
 		
 		gen.dispose();
 		
@@ -55,5 +59,6 @@ public class Assets {
 		quitButtonLight = new Texture("quitButtonLight.png");
 		quitButtonDark = new Texture("quitButtonDark.png");
 		highscoreBackground = new Texture("highscoreScreen.png");
+		aboutButton = new Texture("aboutButton.png");
 	}
 }

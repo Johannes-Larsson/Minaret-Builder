@@ -66,8 +66,13 @@ public class GameScene extends Scene {
 		String s = "Score: " + score;
 		TextBounds b = Assets.fontBig.getBounds(s);
 		Assets.fontBig.draw(uiBatch, s, Game.UIWIDTH / 2 - b.width / 2, Game.UIHEIGHT - b.height * 1.2f); //todo: actuall score
+	
+		if (gameOver) {
+			b = Assets.fontBig.getBounds("Game Over!");
+			Assets.fontBig.draw(uiBatch, "Game Over!", Game.UIWIDTH / 2 - b.width / 2, Game.UIHEIGHT - b.height * 1.2f - 400); //todo: actuall score
+		}
 		
-		super.drawUi(uiBatch);
+	super.drawUi(uiBatch);
 	}
 	
 	public int getNoOfTowers() {
